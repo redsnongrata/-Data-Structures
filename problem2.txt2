@@ -1,0 +1,52 @@
+//Problem 2 Algorithm (Determining Orthogonal Vectors Using Dot Product and Arrays):
+
+function dotProduct(vector1, vector2) {
+    // Initialize to 0
+    let dotProductResult = 0;
+
+    for (let i = 0; i < vector1.length; i++) {
+                dotProductResult += vector1[i] * vector2[i];
+    }
+
+    return dotProductResult;
+}
+
+// Function thatcheck if the set of vectors is orthogonal
+function isOrthogonal(vectors) {
+    // Initialize an array to store the orthogonal status of each pair of vectors
+    let orthogonalStatus = [];
+
+    // Iterate through vectors in pairs
+    for (let i = 0; i < vectors.length; i += 2) {
+        // Extract 2 vectors for comparison
+        let vector1 = vectors[i];
+        let vector2 = vectors[i + 1];
+
+        // Calculate the dot product of the 2 vectors
+        let dotProductResult = dotProduct(vector1, vector2);
+
+        // if dot product is 0 (vectors are orthogonal)
+        if (dotProductResult === 0) {
+            orthogonalStatus.push(true); // Vectors orthogonal
+        } else {
+            orthogonalStatus.push(false); // Vectors not orthogonal
+        }
+    }
+
+    // Return the array of orthogonal.s
+    return orthogonalStatus;
+}
+
+// Define an array
+let vectors = [
+    [1, 0, 0],
+    [0, 1, 0],
+    [0, 0, 1],
+    [1, 1, 0]
+];
+
+
+let result = isOrthogonal(vectors);
+
+console.log(result);
+
